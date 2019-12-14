@@ -1,4 +1,6 @@
 /* Wrapper for content*/
-wrapper{
+.wrapper{
+    text-align: center;
     
 }
+
