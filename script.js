@@ -26,6 +26,25 @@ var lowerChr = alert("do you want lowercase letters in your password?");
 var uppChr = alert("Do you want uppercase letters in your password?");
 
 
+//If Statements
+
+if (specialChr === true ){
+ specialChr[Math.floor(Math.random()*specialChr.length)];
+}
+
+if (numChr === true ) { 
+  numChr[Math.floor(Math.random()*numChr.length)];
+}
+
+if (lowerChr === true ){
+  lowerChr[Math.floor(Math.random()*lowerChr.length)];
+}
+
+if (UppChr === true) {
+  UppChr[Math.floor(Math.random()*UppChr.length)];
+}
+
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
