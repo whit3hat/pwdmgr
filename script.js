@@ -5,10 +5,10 @@ var generateBtn = document.querySelector("#generate");
 var chrLimit
 
 //Character Types
-var specialChr = ['!' , '@' , '#' , "$" , '%' , '^' , '&' , '*' , '(' , ')']
-var numChr = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0']
-var lowerChr = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var UppChr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z']
+var special = ['!' , '@' , '#' , "$" , '%' , '^' , '&' , '*' , '(' , ')']
+var num = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0']
+var lower = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var Upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z']
 
 //available for password
 let avail = [] 
@@ -32,16 +32,16 @@ var uppChr = confirm("Do you want uppercase letters in your password?");
 
 //get variables for available array
 if(specialChr){
-  avail = avail.concat(specialChr)
+  avail = avail.concat(special);
 }
 if(numChr){
-  avail = avail.concat(numChr)
+  avail = avail.concat(num);
 }
 if(lowerChr){
-  avail = avail.concat(lowerChr)
+  avail = avail.concat(lower);
 }
 if(uppChr){
-  avail = avail.concat(lowerChr)
+  avail = avail.concat(lower);
 }
 
 
@@ -83,4 +83,3 @@ while(password.length <= chrLimit){
   password.push(avail[rnd]);
 }
 
-console.log(password);
