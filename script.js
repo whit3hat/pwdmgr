@@ -1,19 +1,18 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//Must be between 8 and 128
-var chrLimit
+
 
 //Character Types
-var special = ['!' , '@' , '#' , "$" , '%' , '^' , '&' , '*' , '(' , ')']
-var num = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0']
-var lower = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var Upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z']
+var special = ['!' , '@' , '#' , "$" , '%' , '^' , '&' , '*' , '(' , ')'];
+var num = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0'];
+var lower = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var Upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z'];
 
 //available for password
 let avail = [] 
 
-generateBtn.addEventListener('click' ,function(){
+
 //Character Count between 8-128
 var chrLimit = prompt("How many characters would you like your password to be?");
 
@@ -28,13 +27,18 @@ var lowerChr = confirm("do you want lowercase letters in your password?");
 
 //Uppercase True/False
 var uppChr = confirm("Do you want uppercase letters in your password?");
-}
+
+//validates all variables are there prior to creating pw
+console.log(chrLimit , specialChr , numChr , lowerChr);
+
+
 
 //get variables for available array
-if(specialChr){
+if (specialChr){
   avail = avail.concat(special);
 }
-if(numChr){
+
+if (numChr){
   avail = avail.concat(num);
 }
 if(lowerChr){
@@ -44,6 +48,16 @@ if(uppChr){
   avail = avail.concat(lower);
 }
 
+//checking if the array for avail is getting populated
+console.log(avail);
+
+
+//take variables from above and pass into password
+let password = []
+while(password.length <= chrLimit){
+  var rnd = Math.floor(Math.random()*avail.length);
+  password.push(avail[rnd]);
+}
 
 
 
@@ -54,18 +68,11 @@ function writePassword() {
 
   passwordText.value = password;
 
-  copyBtn.removeAttribute("disabled");
-  copyBtn.focus();
+  // copyBtn.removeAttribute("disabled");
+  // copyBtn.focus();
 }
 
-function copyToClipboard() {
-  var copyToClipboard= document.getElementById(myInput);
-  copyText.select();
-  copyText.selectSelectionRange(0, 99999)
-  document.execCommand("copy");
-  alert("Copied the password: " + copyText.value);   
-  // BONUS 
-}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -77,9 +84,4 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-let password = []
-while(password.length <= chrLimit){
-  var rnd = Math.floor(Math.random()*avail.length);
-  password.push(avail[rnd]);
-}
 
