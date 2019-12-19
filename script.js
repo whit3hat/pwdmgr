@@ -10,39 +10,41 @@ var numChr = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0']
 var lowerChr = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var UppChr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z']
 
+//available for password
+let avail = [] 
+
+generateBtn.addEventListener('click' ,function(){
 //Character Count between 8-128
-var chrLimit = prompt("How many characters would you like your password to be?")
+var chrLimit = prompt("How many characters would you like your password to be?");
 
 //Special Characters True/False
-var specialChr = alert("Do you want special characters in your password?");
+var specialChr = confirm("Do you want special characters in your password?");
 
 //Number Characters True/False
-var numChr = alert("Do you want numbers in your password?");
+var numChr = confirm("Do you want numbers in your password?");
 
 //Lowercase True/False
-var lowerChr = alert("do you want lowercase letters in your password?");
+var lowerChr = confirm("do you want lowercase letters in your password?");
 
 //Uppercase True/False
-var uppChr = alert("Do you want uppercase letters in your password?");
-
-
-//If Statements
-
-if (specialChr === true ){
- specialChr[Math.floor(Math.random()*specialChr.length)];
+var uppChr = confirm("Do you want uppercase letters in your password?");
 }
 
-if (numChr === true ) { 
-  numChr[Math.floor(Math.random()*numChr.length)];
+//get variables for available array
+if(specialChr){
+  avail = avail.concat(specialChr)
+}
+if(numChr){
+  avail = avail.concat(numChr)
+}
+if(lowerChr){
+  avail = avail.concat(lowerChr)
+}
+if(uppChr){
+  avail = avail.concat(lowerChr)
 }
 
-if (lowerChr === true ){
-  lowerChr[Math.floor(Math.random()*lowerChr.length)];
-}
 
-if (UppChr === true) {
-  UppChr[Math.floor(Math.random()*UppChr.length)];
-}
 
 
 // Write password to the #password input
@@ -69,3 +71,16 @@ function copyToClipboard() {
 generateBtn.addEventListener("click", writePassword);
 
 // BONUS EVENT LISTENER
+
+
+
+
+
+
+let password = []
+while(password.length <= chrLimit){
+  var rnd = Math.floor(Math.random()*avail.length);
+  password.push(avail[rnd]);
+}
+
+console.log(password);
