@@ -1,8 +1,8 @@
 //Character Types
-var special = ['!' , '@' , '#' , "$" , '%' , '^' , '&' , '*' , '(' , ')'];
-var num = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0'];
-var lower = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var Upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z'];
+var specialChr = ['!' , '@' , '#' , "$" , '%' , '^' , '&' , '*' , '(' , ')'];
+var numChr = ['1' , '2' , '3' , '4' , '5' ,'6' , '7' , '8' , '9' , '0'];
+var lowerChr = ['a' , "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var uppChr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z'];
 
 //function to prompt for user password options
 function getPasswordChoices () {
@@ -11,18 +11,18 @@ function getPasswordChoices () {
 var chrLimit = parseInt(prompt("How many characters would you like your password to be?"));
 
 //verify number from prompt
-if (isNaN(length)=== true){
+if (isNaN(chrLimit)=== true){
   alert("You must enter a number.");
   return;
 }
 
 //verify length is 8 characters long.
-if (length < 8){
+if (chrLimit < 8){
   alert ("Password must be greater than 8.");
   return;
 }
 //verify length is greater than 128
-if (length > 128) {
+if (chrLimit > 128) {
   alert("Password length must be less than 129 characters.");
   return;
 }
@@ -68,7 +68,7 @@ var avail = {
 
 //function for random element of array
 function getRandom(arr) {
-  var randIndex = math.floor(math.random()*arr.length);
+  var randIndex = Math.floor(Math.random()*arr.length);
   var randElement = arr[randIndex];
   
   return randElement;
@@ -109,7 +109,7 @@ function generatePassword() {
     guarnteedChr.push(getRandom(uppChr));
   }
 //loop for number of characters required
-for (var i = 0; i < chrLimit.length; i++) {
+for (var i = 0; i < options.length; i++) {
   var possChr = getRandom(possChr);
 
   result.push(possChr);
@@ -122,6 +122,7 @@ for (var i = 0; i < guarnteedChr.length; i++){
 
 //turn result into string to pass into write password var
 return result.join("");
+
 //verify if result is being generated
 console.log(result);
 }
