@@ -1,7 +1,7 @@
 //Character Types
-var specialChr = ['!', '@', '#', "$", '%', '^', '&', '*', '(', ')'];
+var specialChr = ['!', '@', '#', "$", '%', '^', '&', '*', '(', ')' , '~' , '/' , '{' , "}" , '[' , ']' , '-' , '_'];
 var numChr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-var lowerChr = ['a', "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var lowerChr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppChr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", 'Z'];
 
 //function to prompt for user password options
@@ -28,26 +28,26 @@ function getPasswordChoices() {
   }
 
   //Special Characters True/False
-  var specialChr = confirm("Do you want special characters in your password?");
+  var hasSpecialChr = confirm("Do you want special characters in your password?");
 
   //Number Characters True/False
-  var numChr = confirm("Do you want numbers in your password?");
+  var hasnumChr = confirm("Do you want numbers in your password?");
 
   //Lowercase True/False
-  var lowerChr = confirm("do you want lowercase letters in your password?");
+  var haslowerChr = confirm("do you want lowercase letters in your password?");
 
   //Uppercase True/False
-  var uppChr = confirm("Do you want uppercase letters in your password?");
+  var hasuppChr = confirm("Do you want uppercase letters in your password?");
 
   //validates all variables are there prior to creating pw
-  console.log(chrLimit, specialChr, numChr, lowerChr);
+  console.log(chrLimit, hasSpecialChr, hasnumChr, haslowerChr, hasuppChr);
 
   //verify that 1 item is selected
   if (
-    specialChr === false &&
-    numChr === false &&
-    lowerChr === false &&
-    uppChr === false
+    hasSpecialChr === false &&
+    hasnumChr === false &&
+    haslowerChr === false &&
+    hasuppChr === false
   ) {
     alert("Must select at least one character type");
     return;
@@ -56,13 +56,12 @@ function getPasswordChoices() {
   // variable to store input choices
   var avail = {
     chrLimit: chrLimit,
-    specialChr: specialChr,
-    numChr: numChr,
-    lowerChr: lowerChr,
-    uppChr: uppChr
-
+    hasSpecialChr: hasSpecialChr,
+    hasnumChr: hasnumChr,
+    haslowerChr: haslowerChr,
+    hasuppChr: hasuppChr
   };
-  console.log(avail);
+  
   return avail;
   //verify vail variable is created
 
@@ -82,51 +81,53 @@ function generatePassword() {
   
   // store pw as its created
   var result = [];
-
+  
   //array to store types of characters to use in pw
-  var possChr = [];
-
+  var possChrs = [];
+  
   // array to store each of the chosen characters
   var guarnteedChr = [];
+  console.log('first guarnteed characters array' , guarnteedChr);
 
   //adding choices of characters to the arrays from above
   //special Characters
-  if (options.specialChr) {
-    possChr = possChr.concat(specialChr);
+  if (options.hasSpecialChr) {
+    possChrs = possChrs.concat(specialChr);
     guarnteedChr.push(getRandom(specialChr));
   }
   //number Characters
-  if (options.numChr) {
-    possChr = possChr.concat(numChr);
+  if (options.hasnumChr) {
+    possChrs = possChrs.concat(numChr);
     guarnteedChr.push(getRandom(numChr));
   }
   //lowercase Characters
-  if (options.lowerChr) {
-    possChr = possChr.concat(lowerChr);
+  if (options.haslowerChr) {
+    possChrs = possChrs.concat(lowerChr);
     guarnteedChr.push(getRandom(lowerChr));
   }
   //upper Characters
-  if (options.uppChr) {
-    possChr = possChr.concat(uppChr);
+  if (options.hasuppChr) {
+    possChrs = possChrs.concat(uppChr);
     guarnteedChr.push(getRandom(uppChr));
   }
   //loop for number of characters required
   for (var i = 0; i < options.chrLimit; i++) {
-    var possChr = getRandom(possChr);
+    var possChr = getRandom(possChrs);
 
     result.push(possChr);
+
+    console.log('possible character variable' , possChr);
+    console.log(result);
   }
 
   //mix in guaranteed character in result
   for (var i = 0; i < guarnteedChr.length; i++) {
     result[i] = guarnteedChr[i];
   }
-
+  console.log(guarnteedChr);
   //turn result into string to pass into write password var
   return result.join("");
 }
-//verify if result is being generated
-
 
 //references for HTML
 var copyBtn = document.querySelector("#copy");
