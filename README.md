@@ -7,3 +7,16 @@ You just click the generate button then it will start by asking you how many cha
 Once that is completed you can click the 'copy to clipboard' button to easily paste your newly created password into the needed field.
 
 #Images
+![alt text](./imgs/app.png "Default App")
+
+![alt text](./imgs/charactercount.png "Character Count")
+
+![alt text](./imgs/special.png "Special Character Option")
+
+![alt text](./imgs/number.png "Number Character Option")
+
+![alt text](./imgs/lowercase.png "Lowercase Character Option")
+
+![alt text](./imgs/uppercase.png "Uppercase Character Option")
+
+![alt text](./imgs/clipboard.png "Clipboard")
